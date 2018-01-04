@@ -1,3 +1,6 @@
+const READY_STATE_LOADED = 'loaded'
+const READY_STATE_COMPLETE = 'complete'
+
 /**
  * Dinamically loading for JavaScript files
  * @param {*} url - the url of the script to be dinamically loaded
@@ -9,7 +12,7 @@ function loadScript(url, callback) {
 
     if (script.readyState) { // IE
         script.onreadystatechange = () => {
-            if (script.readyState === 'loaded' || script.readyState === 'complete') { 
+            if (script.readyState === READY_STATE_LOADED || script.readyState === READY_STATE_COMPLETE) { 
                 // because IE is inconsistent with which of these two states indicate the final state
                 script.onreadystatechange = null // removing the event handler to be sure it is not handled twice
                 callback()
